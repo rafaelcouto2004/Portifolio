@@ -1,0 +1,84 @@
+/* ===== Estrelas Background ===== */
+.stars {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.star {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation:
+      twinkle 2s infinite ease-in-out alternate,
+      moveStars 15s linear infinite;
+    will-change: transform, opacity;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+@keyframes moveStars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-100vh); }
+}
+
+/* ===== Nuvens Background ===== */
+.backgrouds-clouds {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.backgrouds-clouds::before,
+.backgrouds-clouds::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 60px;
+  background: #fff;
+  border-radius: 50px;
+  opacity: 0.2;
+  animation: moveClouds 60s linear infinite;
+  transform: scale(0.5);
+  filter: blur(12px);
+}
+
+.backgrouds-clouds::before {
+  top: 20%;
+  left: -200px;
+  box-shadow:
+    60px -30px 0 20px #fff,
+    120px -20px 0 10px #fff,
+    30px -10px 0 15px #fff;
+}
+
+.backgrouds-clouds::after {
+  top: 60%;
+  left: -300px;
+  animation-delay: -90s;
+  box-shadow:
+    50px -25px 0 15px #fff,
+    110px -15px 0 10px #fff,
+    20px -10px 0 12px #fff;
+}
+
+@keyframes moveClouds {
+  from { transform: translateX(-300px) scale(0.5); }
+  to { transform: translateX(120vw) scale(0.5); }
+}

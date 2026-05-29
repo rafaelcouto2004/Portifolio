@@ -5,38 +5,69 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rafael Rocha | Cloud Computing Enthusiast</title>
+
+  <!-- Fontes do Google: Inter (texto) e JetBrains Mono (código/mono) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+
+  <!--
+    =====================================================
+    ARQUIVOS CSS — separados por responsabilidade:
+    base.css → variáveis, reset e base
+    fundo.css → fundo animado (estrelas e nuvens)
+    navbar.css → navbar e menu mobile
+    hero.css → seção hero (apresentação, avatar, botões)
+    sessoes.css → projetos, skills, experiência, contato, footer
+    responsivo.css → responsividade (media queries)
+    =====================================================
+  -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/fundo.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/sessoes.css">
+  <link rel="stylesheet" href="css/responsivo.css">
 </head>
 
 <body>
+
+  <!-- Canvas do efeito de fluido no cursor (controlado por fluidCursor.js) -->
   <canvas id="fluid"></canvas>
 
+  <!-- Container das estrelas (pontos gerados via JavaScript em script.js) -->
   <div class="stars"></div>
 
-  <!--nuvem-->
+  <!-- Nuvens animadas (geradas via CSS puro com pseudo-elementos) -->
   <div class="backgrouds-clouds"></div>
 
-  <!-- Navigation -->
+
+  <!-- =====================================================
+       NAVBAR — barra de navegação fixa no topo
+       ===================================================== -->
   <nav class="navbar">
     <div class="nav-container">
-      <a href="#" class="logo">
-      </a>
-      <ul class="nav-links">
 
+      <!-- Logo (vazio; pode ser preenchido com texto ou SVG) -->
+      <a href="#" class="logo"></a>
+
+      <!-- Links de navegação (desktop) -->
+      <ul class="nav-links">
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#projetos">Projetos</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
+
+      <!-- Botão "Disponível" com bolinha pulsante -->
       <a href="#contato" class="nav-cta">
         <span class="cta-dot"></span>
         Disponível
       </a>
+
+      <!-- Botão hambúrguer (só aparece no mobile) -->
       <button class="mobile-menu-btn" id="mobileMenuBtn">
         <span></span>
         <span></span>
@@ -45,7 +76,10 @@
     </div>
   </nav>
 
-  <!-- Mobile Menu -->
+
+  <!-- =====================================================
+       MENU MOBILE — painel que abre ao clicar no hambúrguer
+       ===================================================== -->
   <div class="mobile-menu" id="mobileMenu">
     <ul class="mobile-nav-links">
       <li><a href="#sobre">Sobre</a></li>
@@ -56,33 +90,41 @@
     </ul>
   </div>
 
-  <!-- Hero Section -->
+
+  <!-- =====================================================
+       HERO — seção de apresentação principal
+       ===================================================== -->
   <section class="hero" id="sobre">
     <div class="hero-container">
+
+      <!-- Coluna esquerda: textos, estatísticas e botões -->
       <div class="hero-content">
+
+        <!-- Pílula de categoria -->
         <div class="hero-badge">
           <span class="badge-dot"></span>
-          Cloud Computing Enthusiast (AWS/Azure/GCP)
+          Cloud Computing Enthusiast
         </div>
 
+        <!-- Título com nome -->
         <h1 class="hero-title">
           <span class="hero-title-line">Olá, eu sou</span>
           <span class="gradient-text">Rafael Rocha</span>
         </h1>
 
+        <!-- Efeito de máquina de escrever (texto trocado pelo JS) -->
         <div class="typewriter-container">
           <span class="typewriter-text" id="typewriter"></span>
           <span class="typewriter-cursor">|</span>
         </div>
 
-        <p class="hero-description">
+        <!-- Descrição curta -->
         <p class="descricao-nome">
-          Estudante de Análise e Desenvolvimento de Sistemas com foco em AWS, Azure e GCP. Transformando ideias em
-          soluções escaláveis através da computação em nuvem.
-
-        </p>
+          Estudante de Análise e Desenvolvimento de Sistemas com foco em AWS, Azure e GCP.
+          Transformando ideias em soluções escaláveis através da computação em nuvem.
         </p>
 
+        <!-- Contadores animados (ativados pelo JS via IntersectionObserver) -->
         <div class="hero-stats">
           <div class="stat-item">
             <span class="stat-number" data-target="10">0</span>
@@ -101,6 +143,7 @@
           </div>
         </div>
 
+        <!-- Botões de ação -->
         <div class="hero-buttons">
           <a href="#projetos" class="btn btn-primary">
             <span>Ver Projetos</span>
@@ -116,34 +159,38 @@
           </a>
         </div>
 
+        <!-- Links para redes sociais -->
         <div class="social-links">
           <a href="https://github.com/rafaelcouto2004" class="social-link" aria-label="GitHub">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
             </svg>
           </a>
           <a href="https://www.linkedin.com/in/rafael-rocha-753491378/" class="social-link" aria-label="LinkedIn">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
             </svg>
           </a>
-
         </div>
-      </div>
+      </div><!-- fim .hero-content -->
+
+      <!-- Coluna direita: avatar com anéis e badges flutuantes -->
       <div class="hero-visual">
         <div class="avatar-container">
+
+          <!-- Anéis giratórios ao redor da foto -->
           <div class="avatar-ring ring-1"></div>
           <div class="avatar-ring ring-2"></div>
           <div class="avatar-ring ring-3"></div>
+
+          <!-- Foto de perfil -->
           <div class="avatar">
             <div class="avatar-inner">
               <img src="img/perfil.png" alt="Foto de Rafael Rocha" />
             </div>
           </div>
 
-          <!-- Floating Tech Badges -->
+          <!-- Badges flutuantes com ícones de tecnologia -->
           <div class="floating-badge badge-python">
             <img src="img/python-127-svgrepo-com.svg" alt="Python" />
           </div>
@@ -157,21 +204,26 @@
             <img src="img/java-svgrepo-com.svg" alt="Java" />
           </div>
         </div>
-      </div>
-    </div>
+      </div><!-- fim .hero-visual -->
+    </div><!-- fim .hero-container -->
 
-    <!-- Scroll Indicator -->
+    <!-- Indicador de scroll (mouse animado na base) -->
     <div class="scroll-indicator">
       <div class="scroll-mouse">
         <div class="scroll-wheel"></div>
       </div>
       <span>Scroll</span>
     </div>
-  </section>
+  </section><!-- fim .hero -->
 
-  <!-- Tech Marquee -->
+
+  <!-- =====================================================
+       MARQUEE — faixa com scroll infinito de tecnologias
+       O conteúdo é duplicado para criar loop contínuo
+       ===================================================== -->
   <section class="tech-marquee">
     <div class="marquee-track">
+      <!-- Conteúdo original -->
       <div class="marquee-content">
         <span class="tech-item"><span class="tech-icon"></span> Python3</span>
         <span class="tech-item"><span class="tech-icon"></span> Java</span>
@@ -188,6 +240,7 @@
         <span class="tech-item"><span class="tech-icon"></span> Azure</span>
         <span class="tech-item"><span class="tech-icon"></span> GCP</span>
       </div>
+      <!-- Cópia do conteúdo (necessária para o loop seamless da animação CSS) -->
       <div class="marquee-content" aria-hidden="true">
         <span class="tech-item"><span class="tech-icon"></span> Python3</span>
         <span class="tech-item"><span class="tech-icon"></span> Java</span>
@@ -207,9 +260,13 @@
     </div>
   </section>
 
-  <!-- Projects Section -->
+
+  <!-- =====================================================
+       PROJETOS — grid de cards com overlay ao hover
+       ===================================================== -->
   <section class="projects" id="projetos">
     <div class="section-container">
+
       <div class="section-header">
         <span class="section-badge">Portfólio</span>
         <h2 class="section-title">Projetos em <span class="gradient-text">Destaque</span></h2>
@@ -217,12 +274,14 @@
       </div>
 
       <div class="projects-grid">
-        <!-- Project 1 -->
+
+        <!-- PROJETO 1 — Destaque (ocupa linha inteira) -->
         <article class="project-card featured">
           <div class="project-image">
             <div class="project-placeholder">
               <img src="img/crypto123.png" alt="Arbitragem de Cripto" class="project-placeholder">
             </div>
+            <!-- Overlay com botões de demo e código -->
             <div class="project-overlay">
               <div class="project-links">
                 <a href="#" class="project-link" aria-label="Ver Demo">
@@ -232,8 +291,7 @@
                 </a>
                 <a href="#" class="project-link" aria-label="Ver Codigo">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path
-                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
                   </svg>
                 </a>
               </div>
@@ -241,8 +299,9 @@
           </div>
           <div class="project-content">
             <h3 class="project-title">Arbitragem de Criptomoedas</h3>
-            <p class="project-description">Sistema de arbitragem de criptomoedas desenvolvido em Python para
-              monitoramento automático de preços entre exchanges, identificando oportunidades de lucro em tempo real.
+            <p class="project-description">
+              Sistema de arbitragem de criptomoedas desenvolvido em Python para monitoramento automático
+              de preços entre exchanges, identificando oportunidades de lucro em tempo real.
             </p>
             <div class="project-tags">
               <span class="tag">Next.js</span>
@@ -253,9 +312,7 @@
           </div>
         </article>
 
-        
-
-        <!-- Project 2 -->
+        <!-- PROJETO 2 — AWS S3 Upload -->
         <article class="project-card">
           <div class="project-image">
             <img src="img/awss3.png" alt="Projeto AWS S3" class="project-placeholder">
@@ -268,8 +325,7 @@
                 </a>
                 <a href="https://github.com/rafaelcouto2004/aws-s3-upload" class="project-link" aria-label="Ver Codigo">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path
-                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
                   </svg>
                 </a>
               </div>
@@ -277,8 +333,10 @@
           </div>
           <div class="project-content">
             <h3 class="project-title">Sistema de Upload Automatizado</h3>
-            <p class="project-description">Sistema de upload automatizado para AWS S3 desenvolvido em Python, com envio
-              de arquivos em tempo real, controle de duplicidade e gerenciamento seguro de acesso com IAM.</p>
+            <p class="project-description">
+              Sistema de upload automatizado para AWS S3 desenvolvido em Python, com envio de arquivos
+              em tempo real, controle de duplicidade e gerenciamento seguro de acesso com IAM.
+            </p>
             <div class="project-tags">
               <span class="tag">Python</span>
               <span class="tag">AWS S3</span>
@@ -288,23 +346,20 @@
           </div>
         </article>
 
-        <!-- Project 3 -->
+        <!-- PROJETO 3 — Calculadora Web -->
         <article class="project-card">
           <div class="project-image">
             <img src="img/calculadoraport.jpeg" alt="Projeto Calculadora Web" class="project-placeholder">
             <div class="project-overlay">
               <div class="project-links">
-                <a href="https://rafaelcouto2004.github.io/Calculadora-Simples/" class="project-link"
-                  aria-label="Ver Demo">
+                <a href="https://rafaelcouto2004.github.io/Calculadora-Simples/" class="project-link" aria-label="Ver Demo">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
                   </svg>
                 </a>
-                <a href="https://github.com/rafaelcouto2004/Calculadora-Simples" class="project-link"
-                  aria-label="Ver Codigo">
+                <a href="https://github.com/rafaelcouto2004/Calculadora-Simples" class="project-link" aria-label="Ver Codigo">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path
-                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
                   </svg>
                 </a>
               </div>
@@ -312,8 +367,10 @@
           </div>
           <div class="project-content">
             <h3 class="project-title">Calculadora Web</h3>
-            <p class="project-description">Meu primeiro projeto web, uma calculadora desenvolvida com HTML, CSS e
-              JavaScript, com histórico persistente e interface em modo escuro.</p>
+            <p class="project-description">
+              Meu primeiro projeto web, uma calculadora desenvolvida com HTML, CSS e JavaScript,
+              com histórico persistente e interface em modo escuro.
+            </p>
             <div class="project-tags">
               <span class="tag">HTML</span>
               <span class="tag">CSS</span>
@@ -322,9 +379,9 @@
           </div>
         </article>
 
-        </article>
-      </div>
+      </div><!-- fim .projects-grid -->
 
+      <!-- Link para todos os projetos no GitHub -->
       <div class="projects-cta">
         <a href="https://github.com/rafaelcouto2004?tab=repositories" class="btn btn-outline">
           Ver Todos os Projetos
@@ -334,11 +391,16 @@
         </a>
       </div>
     </div>
-  </section>
+  </section><!-- fim .projects -->
 
-  <!-- Skills Section -->
+
+  <!-- =====================================================
+       SKILLS — barras de progresso por categoria
+       As barras animam quando entram na viewport (JS)
+       ===================================================== -->
   <section class="skills" id="skills">
     <div class="section-container">
+
       <div class="section-header">
         <span class="section-badge">Habilidades</span>
         <h2 class="section-title">Stack <span class="gradient-text">Tecnológico</span></h2>
@@ -346,7 +408,8 @@
       </div>
 
       <div class="skills-grid">
-        <!-- AWS -->
+
+        <!-- Categoria: AWS -->
         <div class="skill-category">
           <div class="category-header">
             <div class="category-icon cyan">
@@ -358,37 +421,23 @@
             <h3>AWS</h3>
           </div>
           <div class="skill-bars">
+            <!-- --progress define até onde a barra vai (lido pelo CSS via custom property) -->
             <div class="skill-bar">
-              <div class="skill-info">
-                <span>S3</span>
-                <span>50%</span>
-              </div>
-              <div class="skill-progress">
-                <div class="skill-fill cyan" style="--progress: 50%"></div>
-              </div>
+              <div class="skill-info"><span>S3</span><span>50%</span></div>
+              <div class="skill-progress"><div class="skill-fill cyan" style="--progress: 50%"></div></div>
             </div>
             <div class="skill-bar">
-              <div class="skill-info">
-                <span>EC2</span>
-                <span>25%</span>
-              </div>
-              <div class="skill-progress">
-                <div class="skill-fill cyan" style="--progress: 25%"></div>
-              </div>
+              <div class="skill-info"><span>EC2</span><span>25%</span></div>
+              <div class="skill-progress"><div class="skill-fill cyan" style="--progress: 25%"></div></div>
             </div>
             <div class="skill-bar">
-              <div class="skill-info">
-                <span>IAM</span>
-                <span>75%</span>
-              </div>
-              <div class="skill-progress">
-                <div class="skill-fill cyan" style="--progress: 75%"></div>
-              </div>
+              <div class="skill-info"><span>IAM</span><span>75%</span></div>
+              <div class="skill-progress"><div class="skill-fill cyan" style="--progress: 75%"></div></div>
             </div>
           </div>
         </div>
 
-        <!-- Web -->
+        <!-- Categoria: Web -->
         <div class="skill-category">
           <div class="category-header">
             <div class="category-icon purple">
@@ -402,141 +451,102 @@
           </div>
           <div class="skill-bars">
             <div class="skill-bar">
-              <div class="skill-info">
-                <span>HTML5</span>
-                <span>45%</span>
-              </div>
-              <div class="skill-progress">
-                <div class="skill-fill purple" style="--progress: 45%"></div>
-              </div>
+              <div class="skill-info"><span>HTML5</span><span>45%</span></div>
+              <div class="skill-progress"><div class="skill-fill purple" style="--progress: 45%"></div></div>
             </div>
             <div class="skill-bar">
-              <div class="skill-info">
-                <span>CSS3</span>
-                <span>36%</span>
-              </div>
-              <div class="skill-progress">
-                <div class="skill-fill purple" style="--progress: 36%"></div>
-              </div>
+              <div class="skill-info"><span>CSS3</span><span>36%</span></div>
+              <div class="skill-progress"><div class="skill-fill purple" style="--progress: 36%"></div></div>
             </div>
             <div class="skill-bar">
-              <div class="skill-info">
-                <span>JavaScript</span>
-                <span>24%</span>
-              </div>
-              <div class="skill-progress">
-                <div class="skill-fill purple" style="--progress: 24%"></div>
-              </div>
+              <div class="skill-info"><span>JavaScript</span><span>24%</span></div>
+              <div class="skill-progress"><div class="skill-fill purple" style="--progress: 24%"></div></div>
             </div>
           </div>
         </div>
 
-        <!-- DevOps -->
+        <!-- Categoria: Back End -->
         <div class="skill-category">
           <div class="category-header">
             <div class="category-icon pink">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-
-                <path
-                  d="M19.14,12.94a7.43,7.43,0,0,0,.05-.94,7.43,7.43,0,0,0-.05-.94l2.11-1.65a.5.5,0,0,0,.12-.64l-2-3.46a.5.5,0,0,0-.6-.22l-2.49,1a7.28,7.28,0,0,0-1.63-.94l-.38-2.65A.5.5,0,0,0,13.78,2H10.22a.5.5,0,0,0-.49.41L9.35,5.06a7.28,7.28,0,0,0-1.63.94l-2.49-1a.5.5,0,0,0-.6.22l-2,3.46a.5.5,0,0,0,.12.64L4.86,11.06a7.43,7.43,0,0,0-.05.94,7.43,7.43,0,0,0,.05.94L2.75,14.59a.5.5,0,0,0-.12.64l2,3.46a.5.5,0,0,0,.6.22l2.49-1a7.28,7.28,0,0,0,1.63.94l.38,2.65a.5.5,0,0,0,.49.41h3.56a.5.5,0,0,0,.49-.41l.38-2.65a7.28,7.28,0,0,0,1.63-.94l2.49,1a.5.5,0,0,0,.6-.22l2-3.46a.5.5,0,0,0-.12-.64ZM12,15.5A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" />
-
+                <path d="M19.14,12.94a7.43,7.43,0,0,0,.05-.94,7.43,7.43,0,0,0-.05-.94l2.11-1.65a.5.5,0,0,0,.12-.64l-2-3.46a.5.5,0,0,0-.6-.22l-2.49,1a7.28,7.28,0,0,0-1.63-.94l-.38-2.65A.5.5,0,0,0,13.78,2H10.22a.5.5,0,0,0-.49.41L9.35,5.06a7.28,7.28,0,0,0-1.63.94l-2.49-1a.5.5,0,0,0-.6.22l-2,3.46a.5.5,0,0,0,.12.64L4.86,11.06a7.43,7.43,0,0,0-.05.94,7.43,7.43,0,0,0,.05.94L2.75,14.59a.5.5,0,0,0-.12.64l2,3.46a.5.5,0,0,0,.6.22l2.49-1a7.28,7.28,0,0,0,1.63.94l.38,2.65a.5.5,0,0,0,.49.41h3.56a.5.5,0,0,0,.49-.41l.38-2.65a7.28,7.28,0,0,0,1.63-.94l2.49,1a.5.5,0,0,0,.6-.22l2-3.46a.5.5,0,0,0-.12-.64ZM12,15.5A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" />
               </svg>
             </div>
             <h3>Back End</h3>
           </div>
           <div class="skill-bars">
             <div class="skill-bar">
-              <div class="skill-info">
-                <span>Python</span>
-                <span>45%</span>
-              </div>
-              <div class="skill-progress">
-                <div class="skill-fill pink" style="--progress: 45%"></div>
-              </div>
+              <div class="skill-info"><span>Python</span><span>45%</span></div>
+              <div class="skill-progress"><div class="skill-fill pink" style="--progress: 45%"></div></div>
             </div>
             <div class="skill-bar">
-              <div class="skill-info">
-                <span>Java</span>
-                <span>15%</span>
-              </div>
-              <div class="skill-progress">
-                <div class="skill-fill pink" style="--progress: 15%"></div>
-              </div>
+              <div class="skill-info"><span>Java</span><span>15%</span></div>
+              <div class="skill-progress"><div class="skill-fill pink" style="--progress: 15%"></div></div>
             </div>
             <div class="skill-bar">
-              <div class="skill-info">
-                <span>C#</span>
-                <span>9%</span>
-              </div>
-              <div class="skill-progress">
-                <div class="skill-fill pink" style="--progress: 9%"></div>
-              </div>
+              <div class="skill-info"><span>C#</span><span>9%</span></div>
+              <div class="skill-progress"><div class="skill-fill pink" style="--progress: 9%"></div></div>
             </div>
           </div>
         </div>
 
-        <!-- Ferramentas -->
+        <!-- Categoria: Ferramentas -->
         <div class="skill-category">
           <div class="category-header">
             <div class="category-icon green">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path
-                  d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
               </svg>
             </div>
             <h3>Ferramentas</h3>
           </div>
           <div class="skill-bars">
             <div class="skill-bar">
-              <div class="skill-info">
-                <span>Git</span>
-                <span>37%</span>
-              </div>
-              <div class="skill-progress">
-                <div class="skill-fill green" style="--progress: 37%"></div>
-              </div>
+              <div class="skill-info"><span>Git</span><span>37%</span></div>
+              <div class="skill-progress"><div class="skill-fill green" style="--progress: 37%"></div></div>
             </div>
             <div class="skill-bar">
-              <div class="skill-info">
-                <span>VS Code</span>
-                <span>45%</span>
-              </div>
-              <div class="skill-progress">
-                <div class="skill-fill green" style="--progress: 45%"></div>
-              </div>
+              <div class="skill-info"><span>VS Code</span><span>45%</span></div>
+              <div class="skill-progress"><div class="skill-fill green" style="--progress: 45%"></div></div>
             </div>
             <div class="skill-bar">
-              <div class="skill-info">
-                <span>GitHub</span>
-                <span>39%</span>
-              </div>
-              <div class="skill-progress">
-                <div class="skill-fill green" style="--progress: 39%"></div>
-              </div>
+              <div class="skill-info"><span>GitHub</span><span>39%</span></div>
+              <div class="skill-progress"><div class="skill-fill green" style="--progress: 39%"></div></div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Experience Section -->
+      </div><!-- fim .skills-grid -->
+    </div>
+  </section><!-- fim .skills -->
+
+
+  <!-- =====================================================
+       EXPERIÊNCIA — linha do tempo vertical
+       ===================================================== -->
   <section class="experience" id="experiencia">
     <div class="section-container">
+
       <div class="section-header">
-        <span class="section-badge">Trajetoria</span>
-        <h2 class="section-title">Experiencia <span class="gradient-text">Profissional</span></h2>
+        <span class="section-badge">Trajetória</span>
+        <h2 class="section-title">Experiência <span class="gradient-text">Profissional</span></h2>
         <p class="section-description">Minha jornada pessoal</p>
       </div>
 
       <div class="timeline">
+
+        <!-- Item 1: Exército -->
         <div class="timeline-item">
           <div class="timeline-marker"></div>
           <div class="timeline-content">
             <span class="timeline-date">2023 - 2024</span>
             <h3 class="timeline-title">Soldado</h3>
             <p class="timeline-company">Exército Brasileiro</p>
-            <p class="timeline-description">"Profissional disciplinado e resiliente, atuante em operações de segurança, logística e manutenção da ordem, com forte capacidade de liderança, trabalho em equipe e pronta resposta sob pressão."</p>
+            <p class="timeline-description">
+              Profissional disciplinado e resiliente, atuante em operações de segurança, logística e
+              manutenção da ordem, com forte capacidade de liderança, trabalho em equipe e pronta resposta sob pressão.
+            </p>
             <div class="timeline-tags">
               <span>Disciplina</span>
               <span>Hierarquia</span>
@@ -546,13 +556,17 @@
           </div>
         </div>
 
+        <!-- Item 2: Motorista -->
         <div class="timeline-item">
           <div class="timeline-marker"></div>
           <div class="timeline-content">
             <span class="timeline-date">2024 - 2026</span>
             <h3 class="timeline-title">Motorista de Aplicativo</h3>
             <p class="timeline-company">Uber/99</p>
-            <p class="timeline-description">Profissional autônomo focado em mobilidade urbana, prestando serviços de transporte de passageiros com foco em segurança, otimização de rotas e excelência no atendimento ao cliente.</p>
+            <p class="timeline-description">
+              Profissional autônomo focado em mobilidade urbana, prestando serviços de transporte de passageiros
+              com foco em segurança, otimização de rotas e excelência no atendimento ao cliente.
+            </p>
             <div class="timeline-tags">
               <span>Autogestão</span>
               <span>Visão Empreendedora</span>
@@ -561,14 +575,17 @@
           </div>
         </div>
 
+        <!-- Item 3: Faculdade (atual) -->
         <div class="timeline-item">
           <div class="timeline-marker"></div>
           <div class="timeline-content">
             <span class="timeline-date">2026 - Atual</span>
             <h3 class="timeline-title">Estudante de Análise e Desenvolvimento de Sistemas</h3>
             <p class="timeline-company">Centro Universitário Ritter dos Reis</p>
-            <p class="timeline-description">Estudo de programação, desenvolvimento de software e tecnologias emergentes.
-              Participação em projetos colaborativos e atividades extracurriculares.</p>
+            <p class="timeline-description">
+              Estudo de programação, desenvolvimento de software e tecnologias emergentes.
+              Participação em projetos colaborativos e atividades extracurriculares.
+            </p>
             <div class="timeline-tags">
               <span>Desenvolvimento e Código</span>
               <span>Arquitetura e Estrutura de Software</span>
@@ -576,13 +593,18 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Contact Section -->
+      </div><!-- fim .timeline -->
+    </div>
+  </section><!-- fim .experience -->
+
+
+  <!-- =====================================================
+       CONTATO — cards de info + formulário
+       ===================================================== -->
   <section class="contact" id="contato">
     <div class="section-container">
+
       <div class="section-header">
         <span class="section-badge">Contato</span>
         <h2 class="section-title">Vamos <span class="gradient-text">Conversar?</span></h2>
@@ -590,7 +612,10 @@
       </div>
 
       <div class="contact-grid">
+
+        <!-- Cards de informação de contato -->
         <div class="contact-info">
+
           <div class="contact-card">
             <div class="contact-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -612,8 +637,10 @@
               </svg>
             </div>
             <div>
-              <h4>Localizacao</h4>
-              <span>Porto Alegre, Brasil</span>
+              <h4>Localização</h4>
+              <a href="https://www.google.com/maps/place/Porto+Alegre,+RS" target="_blank" rel="noopener noreferrer">
+                Porto Alegre, Brasil
+              </a>
             </div>
           </div>
 
@@ -629,8 +656,10 @@
               <span>Freelance & Full-time</span>
             </div>
           </div>
-        </div>
 
+        </div><!-- fim .contact-info -->
+
+        <!-- Formulário de contato (envio simulado pelo JS) -->
         <form class="contact-form" id="contactForm">
           <div class="form-group">
             <label for="name">Nome</label>
@@ -652,13 +681,18 @@
             </svg>
           </button>
         </form>
-      </div>
-    </div>
-  </section>
 
-  <!-- Footer -->
+      </div><!-- fim .contact-grid -->
+    </div>
+  </section><!-- fim .contact -->
+
+
+  <!-- =====================================================
+       FOOTER — rodapé com links sociais e copyright
+       ===================================================== -->
   <footer class="footer">
     <div class="footer-container">
+
       <div class="footer-content">
         <p>Desenvolvido com paixão e muito café</p>
       </div>
@@ -666,14 +700,12 @@
       <div class="footer-links">
         <a href="https://github.com/rafaelcouto2004" class="social-link small" aria-label="GitHub">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
           </svg>
         </a>
         <a href="https://www.linkedin.com/in/rafael-rocha-753491378/" class="social-link small" aria-label="LinkedIn">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
           </svg>
         </a>
       </div>
@@ -682,14 +714,22 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
 
-<script src="fluidCursor.js"></script>
+  <!-- =====================================================
+       SCRIPTS — carregados no final do body para não
+       bloquear a renderização da página
+       ===================================================== -->
 
-<script>
-  useFluidCursor();
-</script>
+  <!-- Lógica geral: estrelas, menu, typewriter, contadores, animações -->
+  <script src="js/script.js"></script>
+
+  <!-- Efeito de fluido WebGL no cursor -->
+  <script src="js/fluidCursor.js"></script>
+
+  <!-- Inicializa o cursor fluido -->
+  <script>
+    useFluidCursor();
+  </script>
 
 </body>
-
 </html>
