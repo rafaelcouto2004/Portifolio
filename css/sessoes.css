@@ -112,8 +112,8 @@
   padding: 0.5rem 1rem;
   background: rgba(168, 85, 247, 0.1);
   border: 1px solid rgba(168, 85, 247, 0.2);
-  border-radius: 9999px;
-  font-size: 0.875rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
   color: var(--neon-green);
   margin-bottom: 1rem;
 }
@@ -636,7 +636,7 @@
 }
 
 .form-group textarea {
-  resize: vertical;
+  resize: none;
   min-height: 120px;
 }
 
